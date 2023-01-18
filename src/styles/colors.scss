@@ -1,0 +1,15 @@
+@use "sass:map";
+
+$colors: (
+  "bg": #080308,
+  "text": #f1f1f1,
+);
+
+$color-bg: var(--color-bg);
+$color-text: var(--color-text);
+
+%root-colors {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}

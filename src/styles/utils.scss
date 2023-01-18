@@ -1,0 +1,14 @@
+@mixin glowing-text($base) {
+  $lighter-base: lighten($base, 20);
+  $lightest-base: lighten($base, 40);
+  color: $base;
+  text-shadow: 0 0 1px transparentize($base, 0.9),
+    0 0 2px transparentize($color: $base, $amount: 0.32),
+    0 0 30px transparentize($color: $base, $amount: 0.5),
+    0 0 15px transparentize($color: $base, $amount: 0.92);
+}
+
+@mixin glowing-background($base) {
+  background: $base;
+  box-shadow: 0 0 0.5rem 0.05rem $base;
+}
