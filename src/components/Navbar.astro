@@ -1,0 +1,46 @@
+---
+---
+
+<nav class="navbar">
+  <a href="/" class="navbar-item navbar-item__header">tona.dev</a>
+</nav>
+<style lang="scss">
+  @use "sass:map";
+  @import "../styles/theme.scss";
+
+  .navbar {
+    height: $navbar-height--tablet;
+    background: $navbar-color-bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include md() {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    .navbar-item__header {
+      @include glowing-text($navbar-link-color);
+      font-size: 2rem;
+      transition: text-shadow 1s ease;
+      font-weight: 700;
+
+      &:hover {
+        @include glowing-text(lighten($navbar-link-color, 15));
+      }
+
+      @include md() {
+        padding-left: 8rem;
+      }
+    }
+
+    .navbar-menu {
+      display: flex;
+      padding-left: 8vw;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>

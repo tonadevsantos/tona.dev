@@ -1,0 +1,14 @@
+@use "sass:map";
+@import "./tokens.scss";
+
+$terminal-color-bg: #1a0e1a;
+$terminal-title-bar-color-bg: lighten($terminal-color-bg, 3);
+@debug $terminal-title-bar-color-bg;
+$terminal-button-color-bg: map.get($colors, "accent");
+
+$navbar-color-bg: map.get($colors, "bg");
+$navbar-link-color: map.get($colors, "accent");
+
+$navbar-height--tablet: calc(min(22vh, 151.36px));
+
+$link-active: #ff0095;

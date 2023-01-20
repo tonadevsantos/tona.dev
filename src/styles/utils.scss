@@ -10,5 +10,13 @@
 
 @mixin glowing-background($base) {
   background: $base;
-  box-shadow: 0 0 0.5rem 0.05rem $base;
+  box-shadow: 0 0 1.45rem 1.45rem $base;
+}
+
+$tablet: 750px;
+
+@mixin md() {
+  @media (min-width: $tablet) {
+    @content;
+  }
 }

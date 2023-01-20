@@ -1,9 +1,80 @@
 ---
+import Terminal from "../views/Terminal.astro";
 import Layout from "../layouts/Layout.astro";
+import Tona from "../views/Tona.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>Hiya!</main>
+<Layout title="tona.dev / Sup!">
+  <main>
+    <div class="hero">
+      <div class="main-hero">
+        <div class="tona-box">
+          <Tona />
+        </div>
+        <div class="terminal-box">
+          <Terminal />
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
 
-<style></style>
+<style lang="scss">
+  @import "../styles/theme.scss";
+
+  .hero {
+    @include md {
+      $hero-height: calc(100vh - $navbar-height--tablet);
+      height: $hero-height;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: -3rem;
+    }
+  }
+
+  .main-hero {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+
+    @include md {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    %box-padding {
+      @include md {
+        padding: 0 1rem;
+      }
+    }
+
+    .tona-box {
+      @extend %box-padding;
+
+      height: 100%;
+
+      display: flex;
+      flex-direction: columns;
+      justify-content: center;
+
+      @include md {
+      }
+    }
+    .terminal-box {
+      @extend %box-padding;
+
+      width: 100%;
+      height: 80vh;
+      margin-top: 2rem;
+      display: flex;
+
+      @include md {
+        height: 20rem;
+        width: 40vw;
+      }
+    }
+  }
+</style>

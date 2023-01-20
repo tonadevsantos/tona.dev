@@ -1,0 +1,56 @@
+---
+import Link from "../components/Link.astro";
+---
+
+<div class="terminal">
+  <div class="terminal__title-bar"></div>
+  <div class="terminal__body">
+    <p>Welcome Wanderer!</p>
+    <div class="content">
+      <p>
+        I'm a developer that is currently looking for new challenges and
+        adventures if you'd like to read my résumé please <Link
+          href="/mtgs-2023.pdf"
+        >
+          click here
+        </Link>
+      </p>
+    </div>
+  </div>
+</div>
+<style lang="scss">
+  @use "sass:map";
+  @import "../styles/theme.scss";
+
+  $text-color: map.get($colors, "text");
+
+  .terminal {
+    width: 100%;
+    max-width: 1024px;
+    height: 100%;
+    max-height: 80vh;
+    background-color: $terminal-color-bg;
+    font-size: 1rem;
+    font-family: monospace;
+
+    @include glowing-text($text-color);
+
+    @include md() {
+      max-height: 762px;
+    }
+
+    .content {
+      margin-left: 0.5em;
+    }
+  }
+
+  .terminal__body {
+    padding: 0.5rem 1rem;
+    overflow-y: auto;
+  }
+
+  .terminal__title-bar {
+    height: 2rem;
+    background-color: $terminal-title-bar-color-bg;
+  }
+</style>

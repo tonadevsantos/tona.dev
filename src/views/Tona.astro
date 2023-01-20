@@ -1,0 +1,66 @@
+---
+import Link from "../components/Link.astro";
+
+const links = [
+  {
+    name: "Twitter",
+    url: "https://twitter.com/martiuh",
+  },
+  {
+    name: "Github",
+    url: "https://github.com/martiuh",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/martiuh",
+  },
+];
+---
+
+<div class="im-tona">
+  <h1 class="im-tona-header">
+    <span class="im-tona-header__name"> I'm Tona González</span>
+    <span class="im-tona-header__subtitle">a Frontend Developer</span>
+  </h1>
+  <div class="im-tona-linkbar">
+    {
+      links.map((link) => (
+        <Link href={link.url} class="im-tona-link">
+          {link.name}
+        </Link>
+      ))
+    }
+  </div>
+  <style lang="scss">
+    @import "../styles/theme.scss";
+
+    .im-tona {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      height: 100%;
+    }
+
+    .im-tona-header {
+      display: flex;
+      flex-direction: column;
+      font-size: 4rem;
+      margin: 0 0 2rem 0;
+
+      &__subtitle {
+        font-size: 0.6em;
+        @include glowing-text($color-text-value);
+      }
+    }
+
+    .im-tona-linkbar {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .im-tona-link {
+      font-size: 1.75rem;
+    }
+  </style>
+</div>
