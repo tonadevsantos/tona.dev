@@ -20,7 +20,27 @@ const links = [
 <div class="im-tona">
   <h1 class="im-tona-header">
     <span class="im-tona-header__name"> I'm Tona González</span>
-    <span class="im-tona-header__subtitle">a Frontend Developer</span>
+    <span class="im-tona-header__subtitle" aria-label="a Frontend Developer">
+      <span aria-hidden="true" class="im-tona-header__animatable">a</span>
+      <span aria-hidden="true" class="im-tona-header__block">
+        {
+          "Frontend"
+            .split("")
+            .map((letter) => (
+              <span class="im-tona-header__animatable">{letter}</span>
+            ))
+        }
+      </span>
+      <span aria-hidden="true" class="im-tona-header__block">
+        {
+          "Developer"
+            .split("")
+            .map((letter) => (
+              <span class="im-tona-header__animatable">{letter}</span>
+            ))
+        }
+      </span>
+    </span>
   </h1>
   <div class="im-tona-linkbar">
     {
@@ -31,6 +51,44 @@ const links = [
       ))
     }
   </div>
+  <script>
+    import anime from "animejs";
+
+    const DURATION = 1000;
+    const letters = document.getElementsByClassName(
+      "im-tona-header__animatable"
+    );
+
+    const letterMovementAnimation = anime
+      .timeline({ loop: true, duration: DURATION, autoplay: false })
+      .add({
+        targets: letters,
+        translateY: [0, -8, 0],
+        opacity: [0.6, 0.9, 1],
+        easing: "easeInOutSine",
+        delay: (el, i) => 50 * i,
+      })
+      .add({
+        duration: DURATION * 2,
+      });
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function handleAnimation(query) {
+      if (query.matches) {
+        letterMovementAnimation.pause();
+      } else {
+        letterMovementAnimation.play();
+      }
+    }
+
+    mediaQuery.addEventListener("change", () => {
+      handleAnimation(mediaQuery);
+    });
+
+    handleAnimation(mediaQuery);
+  </script>
+
   <style lang="scss">
     @import "../styles/theme.scss";
 
@@ -49,8 +107,15 @@ const links = [
       margin: 0 0 2rem 0;
 
       &__subtitle {
+        --animation-repetition: 1;
         font-size: 0.6em;
         @include glowing-text($color-accent-value);
+
+        &:hover {
+          --animation-repetition: 2;
+          --anim-play-state: running;
+          animation-duration: 0.75s;
+        }
       }
     }
 
@@ -61,6 +126,14 @@ const links = [
 
     .im-tona-link {
       font-size: 1.75rem;
+    }
+
+    .im-tona-header__block {
+      display: inline-block;
+    }
+
+    .im-tona-header__animatable {
+      display: inline-block;
     }
   </style>
 </div>
