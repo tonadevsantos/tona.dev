@@ -6,9 +6,9 @@ $terminal-title-bar-color-bg: lighten($terminal-color-bg, 3);
 @debug $terminal-title-bar-color-bg;
 $terminal-button-color-bg: map.get($colors, "accent");
 
-$navbar-color-bg: map.get($colors, "bg");
-$navbar-link-color: map.get($colors, "accent");
+$navbar-color-bg: $color-bg;
+$navbar-link-color: $color-accent-value;
 
 $navbar-height--tablet: calc(min(22vh, 151.36px));
 
-$link-active: #ff0095;
+$link-active: $color-link-value;

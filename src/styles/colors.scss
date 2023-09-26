@@ -1,15 +1,21 @@
 @use "sass:map";
 
+$idea: #2541b2;
+
 $colors: (
   "bg": #080308,
   "text": #f1f1f1,
   "accent": #fff131,
+  "link": #ff0095,
 );
 
 $color-bg: var(--color-bg);
 $color-text: var(--color-text);
 $color-text-value: map.get($colors, "text");
 $color-accent: var(--color-accent);
+$color-accent-value: map.get($colors, "accent");
+$color-link: var(--color-link);
+$color-link-value: map.get($colors, "link");
 
 %root-colors {
   @each $name, $color in $colors {
