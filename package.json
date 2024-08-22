@@ -12,8 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^8.3.3",
     "animejs": "^3.2.1",
-    "astro": "^1.9.0"
+    "astro": "^4.14.4"
   },
   "devDependencies": {
     "sass": "^1.57.1"
