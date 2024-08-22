@@ -70,7 +70,7 @@ const links = [
         translateY: [0, -8, 0],
         opacity: [0.6, 0.9, 1],
         easing: "easeInOutSine",
-        delay: (el, i) => 50 * i,
+        delay: (_, i) => 50 * i,
       })
       .add({
         duration: DURATION * 2,
@@ -78,7 +78,7 @@ const links = [
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    function handleAnimation(query) {
+    function handleAnimation(query: { matches: boolean }) {
       if (query.matches) {
         letterMovementAnimation.pause();
       } else {

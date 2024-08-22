@@ -12,11 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.3",
     "@astrojs/node": "^8.3.3",
     "animejs": "^3.2.1",
     "astro": "^4.14.4"
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.12",
     "sass": "^1.57.1"
   }
 }
