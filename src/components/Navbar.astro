@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <nav class="navbar">
@@ -26,13 +27,19 @@
       font-size: 2rem;
       transition: text-shadow 1s ease;
       font-weight: 700;
+      padding: 0.5rem;
 
       &:hover {
         @include glowing-text(lighten($navbar-link-color, 15));
       }
 
+      &:focus {
+        outline: 2px solid $color-link;
+        border-radius: 4px;
+      }
+
       @include md() {
-        padding-left: 8rem;
+        margin-left: 7.5rem;
       }
     }
 

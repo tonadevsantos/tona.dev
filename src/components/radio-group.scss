@@ -1,0 +1,44 @@
+@import "../styles/theme.scss";
+
+.radio-group {
+  @extend %flex-box-row;
+  @extend %flex-box-g-1;
+  border: none;
+  padding: 0;
+}
+
+.radio-group-option-button__label {
+  @extend %button-box;
+  padding: 8px;
+
+  &:hover {
+    @extend %input-box-hover;
+  }
+
+  &:focus-within {
+    @extend %icon-box-focus;
+  }
+
+  &:has(.radio-group-option-button__input:checked) {
+    @extend %icon-box-active;
+  }
+
+  .radio-group-option-button__input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .radio-group-option-button__icon {
+    @extend %icon-box;
+    @extend %flex-box-col;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .radio-group-option-button__text {
+    @extend %trim-text;
+    max-width: 110%;
+    font-size: 0.65rem;
+    justify-content: center;
+  }
+}

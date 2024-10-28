@@ -2,21 +2,81 @@
   $lighter-base: lighten($base, 20);
   $lightest-base: lighten($base, 40);
   color: $base;
-  text-shadow: 0 0 1px transparentize($base, 0.9),
+  text-shadow:
+    0 0 1px transparentize($base, 0.9),
     0 0 2px transparentize($color: $base, $amount: 0.32),
     0 0 30px transparentize($color: $base, $amount: 0.5),
     0 0 15px transparentize($color: $base, $amount: 0.92);
 }
 
-@mixin glowing-background($base) {
+@mixin glowing-background($base, $factor: 4) {
+  $first: 5px * $factor;
+  $second: 1px * $factor;
   background: $base;
-  box-shadow: 0 0 1.45rem 1.45rem $base;
+  box-shadow: 0 0 $first $second $base;
 }
 
 $tablet: 750px;
+$desktop: 1024px;
+$xl: 1200px;
 
 @mixin md() {
   @media (min-width: $tablet) {
     @content;
   }
+}
+
+@mixin lg() {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin xl() {
+  @media (min-width: $xl) {
+    @content;
+  }
+}
+
+%box-padding {
+  @include md {
+    padding: 0 1rem;
+  }
+}
+
+%flex-box-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%flex-box-col {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-box-row-center {
+  @extend %flex-box-row;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-box-g-1 {
+  gap: 0.5rem;
+}
+
+%flex-box-g-2 {
+  gap: 1rem;
+}
+
+%form-control {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+%trim-text {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }

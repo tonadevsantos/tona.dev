@@ -3,7 +3,6 @@
 
 $terminal-color-bg: #1a0e1a;
 $terminal-title-bar-color-bg: lighten($terminal-color-bg, 3);
-@debug $terminal-title-bar-color-bg;
 $terminal-button-color-bg: map.get($colors, "accent");
 
 $navbar-color-bg: $color-bg;
@@ -12,3 +11,64 @@ $navbar-link-color: $color-accent-value;
 $navbar-height--tablet: calc(min(22vh, 151.36px));
 
 $link-active: $color-link-value;
+
+$input-box-height: 24px;
+
+/** 
+  Default Input Box style
+*/
+%input-box {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background: $color-bg-input;
+  color: $color-bg;
+  height: $input-box-height;
+
+  &:focus {
+    outline: lighten($color-link-value, 16) 2px solid;
+  }
+
+  &:hover {
+    @include glowing-background($color-bg-input-value, 1);
+  }
+}
+
+%input-box-focus {
+  outline: lighten($color-link-value, 16) 2px solid;
+}
+
+%input-box-hover {
+  @include glowing-background($color-bg-input-value, 1);
+}
+
+%button-box {
+  background: $color-bg-input;
+  color: $color-bg;
+  display: inline-flex;
+  border-radius: 4px;
+}
+
+%icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+
+  &__text {
+    font-size: 0.75rem;
+    max-width: 64px;
+    text-align: center;
+  }
+}
+
+%icon-box-active {
+  @include glowing-background($color-link-value, 1.2);
+  color: $color-text;
+}
+
+%icon-box-focus {
+  @extend %input-box-focus;
+  outline-color: $color-accent-value;
+}

@@ -1,0 +1,14 @@
+@import "../../styles/theme.scss";
+
+.date-relative {
+  @extend %flex-box-row;
+  @extend %flex-box-g-1;
+}
+
+.date-relative__input {
+  width: 6ch;
+}
+
+.form-control {
+  @extend %form-control;
+}

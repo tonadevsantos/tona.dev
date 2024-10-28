@@ -1,0 +1,51 @@
+---
+interface Props {
+  id?: string;
+}
+
+const props = Astro.props.id ? { id: Astro.props.id } : {};
+---
+
+<div class="terminal" {...props}>
+  <div class="terminal__title-bar"></div>
+  <div class="terminal__body">
+    <slot />
+  </div>
+</div>
+<style lang="scss">
+  @use "sass:map";
+  @import "../styles/theme.scss";
+
+  $text-color: map.get($colors, "text");
+
+  .terminal {
+    min-width: 640px;
+    width: 100%;
+    max-width: 1024px;
+    height: 100%;
+    max-height: 80vh;
+    background-color: $terminal-color-bg;
+    font-size: 1rem;
+    font-family: monospace;
+
+    @include glowing-text($text-color);
+
+    @include md() {
+      max-height: 762px;
+    }
+
+    .content {
+      margin-left: 0.5em;
+    }
+  }
+
+  .terminal__body {
+    padding: 0.5rem 1rem;
+    overflow-y: auto;
+  }
+
+  .terminal__title-bar {
+    height: 2rem;
+    background-color: $terminal-title-bar-color-bg;
+  }
+</style>

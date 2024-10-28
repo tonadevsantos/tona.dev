@@ -1,0 +1,24 @@
+@import "../../styles/theme.scss";
+
+.date-calculator-form {
+  @extend %flex-box-g-2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  width: 100%;
+}
+
+.date-calculator__result {
+  @extend %font-serif;
+  @extend %flex-box-row-center;
+  font-size: 1.25rem;
+
+  p {
+    margin: 0.25em 0;
+  }
+}
+
+.control {
+  @extend %form-control;
+}

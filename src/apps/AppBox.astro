@@ -1,0 +1,11 @@
+---
+import Window from "../components/Window.astro";
+import { Apps } from "./Apps";
+
+const app = Astro.url.searchParams.get("app");
+console.log(`tona-app`, app);
+---
+
+<Window id="app-box">
+  <Apps app={app} client:load />
+</Window>
