@@ -6,8 +6,7 @@ import {
 } from "./use-date-picker-input";
 
 export function DatePickerInput(props: DatePickerInputProps) {
-  const { triggerProps, overlayProps, dateInputProps } =
-    useDatePickerInput(props);
+  const { dateInputProps } = useDatePickerInput(props);
 
   return (
     <div className="date-picker-input">

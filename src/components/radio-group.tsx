@@ -23,7 +23,7 @@ interface RadioGroupProps extends FieldSetProps {
 const RadioGroupContext = createContext({
   name: "",
   value: "",
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  onChange: (_: React.ChangeEvent<HTMLInputElement>) => {},
 });
 
 export function RadioGroup(props: RadioGroupProps) {
