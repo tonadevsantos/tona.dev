@@ -4,7 +4,6 @@ import "./date-calculators.scss";
 import { RadioGroup } from "../../components/radio-group";
 import {
   calculateRelativeDays,
-  checkIsDateRelativeChange,
   DateRelative,
   type DateRelativeOperation,
 } from "./date-relative";
@@ -13,9 +12,11 @@ import {
   calculateDistance,
   checkIsDateDistanceChange,
   DistanceOutput,
+  presentUnit,
   type CalculateDistanceOutput,
   type DateDistanceOperation,
 } from "./date-distance";
+import { BreadCrumbs } from "../../components/bread-crumbs";
 
 type DateCalculatorResultDistance = {
   type: "distance";
@@ -38,8 +39,8 @@ export function DateCalculatorApp() {
     result: DateCalculatorResult;
   }>({ mode: "none", result: null });
   const numberFormat = useRef(new Intl.NumberFormat("en-US"));
+  const pluralRules = useRef(new Intl.PluralRules("en-US"));
 
-  const { mode, result } = app;
   function setResult(result: DateCalculatorResult) {
     setApp({ mode: app.mode, result });
   }
@@ -50,17 +51,26 @@ export function DateCalculatorApp() {
     setApp({ mode, result: null });
   }
 
+  const { mode, result } = app;
+
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
   }
 
+  function handleOperationChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setMode(
+      event.target.value as DateRelativeOperation | DateDistanceOperation
+    );
+  }
+
   function handleFormChange(event: React.ChangeEvent<HTMLFormElement>) {
     const isOperationChange = event.target.name === "operation";
-    const form = new FormData(event.currentTarget);
+
     if (isOperationChange) {
-      setMode(event.target.value as "add" | "subtract" | "distance");
       return;
     }
+
+    const form = new FormData(event.currentTarget);
 
     const isDateRelativeChange = mode === "add" || mode === "subtract";
     if (isDateRelativeChange) {
@@ -86,19 +96,21 @@ export function DateCalculatorApp() {
   const output =
     result?.type === "relative" ? (
       <>
-        <p>
+        <span>
           The date is{" "}
           <span className="text-accent">
             {result.output.format("dddd, D MMMM YYYY")}
           </span>
-        </p>
+        </span>
       </>
     ) : result?.type === "distance" ? (
       <DistanceOutput output={result.output}>
         {result.output.distance.map(({ unit, value }) => (
           <span key={unit}>
             {numberFormat.current.format(value)}{" "}
-            <span className="text-accent">{unit} </span>{" "}
+            <span className="text-accent">
+              {presentUnit(pluralRules.current, unit, value)}{" "}
+            </span>{" "}
           </span>
         ))}
       </DistanceOutput>
@@ -106,7 +118,9 @@ export function DateCalculatorApp() {
 
   return (
     <div className="date-calculator-app">
-      <p>Apps / Date Calculator</p>
+      <BreadCrumbs
+        crumbs={[{ label: "Apps", href: "/" }, { label: "Date Calculator" }]}
+      />
       <form
         className="date-calculator-form"
         onSubmit={handleSubmit}
@@ -122,22 +136,27 @@ export function DateCalculatorApp() {
             buttonLabel="Select start date"
           />
         </label>
-        <RadioGroup name="operation" label="Operation">
+        <RadioGroup
+          value={mode}
+          onOptionChange={handleOperationChange}
+          name="operation"
+          label="Operation"
+        >
           <RadioGroup.OptionButton value="add">
             <RadioGroup.OptionButtonIcon size={40} label="Add">
               <svg
                 data-slot="icon"
                 aria-hidden="true"
                 fill="none"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M12 4.5v15m7.5-7.5h-15"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></path>
               </svg>
             </RadioGroup.OptionButtonIcon>
@@ -148,15 +167,15 @@ export function DateCalculatorApp() {
                 data-slot="icon"
                 aria-hidden="true"
                 fill="none"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M5 12h14"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></path>
               </svg>
             </RadioGroup.OptionButtonIcon>
@@ -169,14 +188,14 @@ export function DateCalculatorApp() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#a)">
-                  <g clip-path="url(#b)">
+                <g clipPath="url(#a)">
+                  <g clipPath="url(#b)">
                     <path
                       d="M6.75 4v2.25M17.25 4v2.25M3 19.75V8.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 8.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 22h13.5A2.25 2.25 0 0 0 21 19.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 10h13.5A2.25 2.25 0 0 1 21 12.25v7.5"
                       stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M8 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM18 18a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"

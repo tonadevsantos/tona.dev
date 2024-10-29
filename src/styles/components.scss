@@ -8,7 +8,7 @@ $terminal-button-color-bg: map.get($colors, "accent");
 $navbar-color-bg: $color-bg;
 $navbar-link-color: $color-accent-value;
 
-$navbar-height--tablet: calc(min(22vh, 151.36px));
+$navbar-height-tablet: calc(min(22vh, 151.36px));
 
 $link-active: $color-link-value;
 

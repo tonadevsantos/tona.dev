@@ -16,16 +16,24 @@ type FieldSetProps = React.HTMLAttributes<HTMLFieldSetElement>;
 interface RadioGroupProps extends FieldSetProps {
   name: string;
   label: string;
+  value: string;
+  onOptionChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const RadioGroupContext = createContext({
   name: "",
+  value: "",
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
 });
 
 export function RadioGroup(props: RadioGroupProps) {
-  const { name, label, className, ...fieldSetProps } = props;
+  const { name, label, className, value, onOptionChange, ...fieldSetProps } =
+    props;
+
   return (
-    <RadioGroupContext.Provider value={{ name }}>
+    <RadioGroupContext.Provider
+      value={{ name, value, onChange: onOptionChange }}
+    >
       <fieldset
         className={classNames("radio-group", className)}
         {...fieldSetProps}
@@ -45,7 +53,7 @@ export interface RadioGroupOptionButtonProps {
 function RadioGroupOptionButton(props: RadioGroupOptionButtonProps) {
   const { value, children } = props;
   const id = useId();
-  const { name } = useContext(RadioGroupContext);
+  const { name, value: groupValue, onChange } = useContext(RadioGroupContext);
 
   function onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter" || event.key === " ") {
@@ -58,7 +66,10 @@ function RadioGroupOptionButton(props: RadioGroupOptionButtonProps) {
       <input
         className="radio-group-option-button__input"
         type="radio"
+        onChange={onChange}
         name={name}
+        checked={value === groupValue}
+        aria-checked={value === groupValue}
         id={id}
         value={value}
         onKeyDown={onKeyDown}

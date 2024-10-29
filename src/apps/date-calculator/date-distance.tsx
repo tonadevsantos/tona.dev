@@ -97,12 +97,28 @@ export function DistanceOutput({
   const { when } = output;
 
   return (
-    <p>
+    <span>
       {when === "same" ? "The dates are the same " : ""}
-      {when === "future" ? "It'll happen in " : ""}
+      {when === "future" ? "It'll happen " : ""}
       {when === "past" ? "It has happened " : ""}
       {children}
-      {when === "past" ? " ago" : ""}
-    </p>
+      {when === "past" ? " ago" : "after"}
+    </span>
   );
+}
+
+const units = {
+  days: "day",
+  months: "month",
+  years: "year",
+};
+
+export function presentUnit(
+  rules: Intl.PluralRules,
+  unit: string,
+  value: number
+) {
+  const plural = rules.select(value);
+  const unitName = units[unit as keyof typeof units];
+  return `${unitName}${plural === "one" ? "" : "s"}`;
 }
