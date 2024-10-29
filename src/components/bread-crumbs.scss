@@ -1,0 +1,10 @@
+@import "../styles/theme.scss";
+
+.bread-crumbs__link {
+  color: $color-link;
+  text-shadow: $color-link 0 0 10px;
+
+  &:hover {
+    text-shadow: lighten($color-link-value, 10) 0 0 30px;
+  }
+}

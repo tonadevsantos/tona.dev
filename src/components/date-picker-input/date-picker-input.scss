@@ -1,0 +1,47 @@
+@import "../../styles/theme.scss";
+
+$height: $input-box-height;
+
+.date-picker-input {
+  @extend %input-box;
+  display: inline-flex;
+  align-items: center;
+  width: 120px;
+
+  &:focus-within {
+    @extend %input-box-focus;
+  }
+
+  input {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
+    width: 100%;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.date-picker-input__button {
+  width: $height;
+  height: $height;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+
+  &:focus {
+    @extend %input-box-focus;
+    @extend %input-box-hover;
+  }
+}

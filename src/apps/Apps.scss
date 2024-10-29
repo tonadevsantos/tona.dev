@@ -1,0 +1,46 @@
+@import "../styles/theme.scss";
+
+.app-box {
+  display: flex;
+  align-items: center;
+  min-height: 124px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.app-icon {
+  @extend %icon-box;
+
+  #{&}__text {
+    margin: 0.5rem 0 0 0;
+  }
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background: #f1f1f1;
+  border: none;
+  border-radius: 6px;
+}
+
+.button-link {
+  text-decoration: none;
+  display: flex;
+  box-sizing: border-box;
+
+  &:hover {
+    transition: background-color 0.3s;
+    @include glowing-background(lighten($color-icon-value, 5));
+  }
+
+  &:focus {
+    outline: $color-link solid 2px;
+  }
+}
+
+.button-icon {
+  width: 64px;
+  height: 64px;
+  color: white;
+  @include glowing-background($color-icon-value);
+}

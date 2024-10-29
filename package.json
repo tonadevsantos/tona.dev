@@ -14,11 +14,20 @@
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "@astrojs/node": "^8.3.3",
+    "@astrojs/react": "^3.6.2",
+    "@floating-ui/react": "^0.26.25",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
     "animejs": "^3.2.1",
-    "astro": "^4.14.4"
+    "astro": "^4.14.4",
+    "classnames": "^2.5.1",
+    "dayjs": "^1.11.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/animejs": "^3.1.12",
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "vitest": "^2.1.3"
   }
 }
