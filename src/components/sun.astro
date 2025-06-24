@@ -1,0 +1,118 @@
+---
+
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="30vh"
+  height="30vh"
+  viewBox="0 0 200 200"
+>
+  <defs>
+    <!-- Core gradient from pale center to rich yellow -->
+    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"></stop>
+      <stop offset="50%"></stop>
+      <stop offset="100%"></stop>
+    </radialGradient>
+
+    <!-- Ray gradient fading outward -->
+    <radialGradient id="rayGradient" cx="50%" cy="50%" r="100%">
+      <stop offset="0%" stop-opacity="1"></stop>
+      <stop offset="100%" stop-opacity="0"></stop>
+    </radialGradient>
+
+    <!-- Glow filter for soft bloom around everything -->
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"
+      ></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Apply glow to entire sun group -->
+  <g filter="url(#glow)">
+    <!-- Main sun disk -->
+    <circle cx="100" cy="100" r="40" fill="url(#sunGradient)"></circle>
+
+    <!-- Rays: a single triangular path repeated at 30° increments -->
+    <g id="rays">
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(0   100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(30  100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(60  100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(90  100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(120 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(150 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(180 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(210 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(240 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(270 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(300 100 100)"></path>
+      <path
+        d="M100,10 L110,60 L90,60 Z"
+        fill="url(#rayGradient)"
+        transform="rotate(330 100 100)"></path>
+    </g>
+  </g>
+</svg>
+
+<style lang="scss">
+  @import "tailwindcss";
+
+  #sunGradient {
+    [offset="0%"] {
+      stop-color: var(--color-accent-400);
+    }
+    [offset="50%"] {
+      stop-color: var(--color-accent-600);
+    }
+    [offset="100%"] {
+      stop-color: var(--color-accent-700);
+    }
+  }
+
+  #rayGradient {
+    [offset="0%"] {
+      stop-color: var(--color-accent-700);
+    }
+    [offset="100%"] {
+      stop-color: var(--color-accent-900);
+    }
+  }
+</style>

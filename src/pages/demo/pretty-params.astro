@@ -1,0 +1,62 @@
+---
+import Window from "../../components/Window.astro";
+import Layout from "../../layouts/Layout.astro";
+import Link from "../../components/Link.astro";
+import Button from "../../components/Button.astro";
+const { searchParams, origin, pathname } = Astro.url;
+
+const params = ["name", "num", "favoriteColor", "isActive"];
+const demoURL = new URL(`${origin}${pathname}`);
+
+params.forEach((param) => {
+  const value = searchParams.get(param);
+  if (value) {
+    demoURL.searchParams.set(param, value);
+  } else {
+    demoURL.searchParams.set(param, "Unset");
+  }
+});
+---
+
+<Layout title="Pretty params demo">
+  <div class="content">
+    <h1 class="title">Pretty Params Demo Page</h1>
+    <p>
+      Here you can easily test the pretty params browser extension. If you still
+      don't have it please download it from your appropriate store and test it
+      here.
+    </p>
+    <div class="flex align-center justify-center gap-8 mb-4">
+      <Link href="#">Edge Add-on Store</Link>
+      <Link href="#">Firefox Web Store</Link>
+    </div>
+    <Window>
+      {
+        params.map((param) => {
+          const value = searchParams.get(param) ?? "Unset";
+          return (
+            <div class="pretty-params__param flex align-center gap-4 mb-4">
+              <h3 class="pretty-params__key">{param}</h3>
+              <p class="m-0">{value}</p>
+            </div>
+          );
+        })
+      }
+      <Button href={demoURL.toString()} class="pretty-params__link">
+        Start testing
+      </Button>
+    </Window>
+  </div>
+
+  <style lang="scss" is:global>
+    @import "../../styles/theme.scss";
+
+    .title {
+      @include glowing-text($color-text-value);
+    }
+
+    .pretty-params__key {
+      @include glowing-text($color-accent-value);
+    }
+  </style>
+</Layout>

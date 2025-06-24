@@ -1,22 +1,43 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Tona from "../views/Tona.astro";
-import AppBox from "../apps/AppBox.astro";
+import Window from "../components/Window.astro";
+import Display from "../views/Display.astro";
+import { links } from "../content/links";
+import Link from "../components/Link.astro";
 ---
 
 <Layout title="tona.dev / Sup!">
-  <main>
-    <div class="hero">
-      <div class="main-hero">
-        <div class="tona-box">
-          <Tona />
-        </div>
-        <div class="terminal-box">
-          <AppBox />
-        </div>
-      </div>
+  <div class="tona-grid grid grid-cols-3 gap-4 px-4">
+    <div class="col-span-3 md:col-span-2">
+      <Window>
+        <Tona />
+      </Window>
     </div>
-  </main>
+    <div class="col-span-2 md:col-span-1">
+      <Window class="flex flex-col justify-center">
+        <Display />
+      </Window>
+    </div>
+    <div class="col-span-1 md:col-span-3">
+      <Window class="h-24 flex flex-col justify-center">
+        <div class="flex justify-center align-center mb-4 gap-4">
+          {
+            links.map((link) => (
+              <Link
+                href={link.url}
+                class="text-lg "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.name}
+              </Link>
+            ))
+          }
+        </div>
+      </Window>
+    </div>
+  </div>
 </Layout>
 
 <style lang="scss">
@@ -62,5 +83,10 @@ import AppBox from "../apps/AppBox.astro";
       display: flex;
       justify-content: center;
     }
+  }
+
+  .tona-grid {
+    --height-offset: calc(var(--navbar-height) + calc(var(--spacing) * 4));
+    max-height: calc(100vh - var(--height-offset));
   }
 </style>

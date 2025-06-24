@@ -12,21 +12,25 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/node": "^8.3.3",
-    "@astrojs/react": "^3.6.2",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/node": "^9.2.2",
+    "@astrojs/react": "^4.3.0",
     "@floating-ui/react": "^0.26.25",
+    "@tailwindcss/vite": "^4.1.10",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "animejs": "^3.2.1",
-    "astro": "^4.14.4",
+    "astro": "^5.9.4",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
     "@types/animejs": "^3.1.12",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.57.1",
     "vitest": "^2.1.3"
   }

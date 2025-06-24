@@ -1,0 +1,20 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+
+const title = frontmatter.title || "tona.dev / Element!";
+---
+
+<Layout title={title}>
+  <main class="content frontmatter">
+    <slot />
+  </main>
+</Layout>
+
+<style lang="scss" is:global>
+  @import "tailwindcss";
+
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+</style>

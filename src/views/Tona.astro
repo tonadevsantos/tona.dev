@@ -1,142 +1,66 @@
 ---
 import Link from "../components/Link.astro";
-
-const links = [
-  {
-    name: "Github",
-    url: "https://github.com/tonadevsantos",
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/tonadev",
-  },
-  {
-    name: "Dev.to",
-    url: "https://dev.to/tonadev",
-  },
-  {
-    name: "Twitter",
-    url: "https://x.com/tonadev",
-  },
-];
+import Sun from "../components/sun.astro";
 ---
 
-<div class="im-tona">
-  <h1 class="im-tona-header">
+<div class="text-justify p-2">
+  <h1 class="text-3xl mb-4">
     <span class="im-tona-header__name"> I'm Tona González</span>
-    <span class="im-tona-header__subtitle" aria-label="a Frontend Developer">
-      <span aria-hidden="true" class="im-tona-header__animatable">a</span>
-      <span aria-hidden="true" class="im-tona-header__block">
-        {
-          "Frontend"
-            .split("")
-            .map((letter) => (
-              <span class="im-tona-header__animatable">{letter}</span>
-            ))
-        }
-      </span>
-      <span aria-hidden="true" class="im-tona-header__block">
-        {
-          "Developer"
-            .split("")
-            .map((letter) => (
-              <span class="im-tona-header__animatable">{letter}</span>
-            ))
-        }
-      </span>
-    </span>
   </h1>
-  <div class="im-tona-linkbar">
-    {
-      links.map((link) => (
-        <Link href={link.url} class="im-tona-link">
-          {link.name}
-        </Link>
-      ))
-    }
+  <p class="mb-4">
+    I love to build and create, I'm a self-taught software developer and my main
+    stack is TypeScript, React and Node.js. I've worked in multiple team sizes
+    and industries. I've collaborated creating npm packages, design systems,
+    building data heavy websites, data intensive dashboards and more.
+  </p>
+  <h2 class="text-lg">Latest projects</h2>
+  <ul class="list-disc pl-4 break-keep">
+    <li>
+      <strong>Pretty Params</strong>: A browser extension to manage the URL
+      search params easily,
+      <Link href="/projects/pretty-params">know more</Link>
+    </li>
+    <li>
+      <strong>Recicla CV</strong>: A website for a recycling company in
+      Guadalajara, México, <Link href="https://reciclacv.com"
+        >give it a look</Link
+      >
+    </li>
+    <li>
+      <strong>Nectar Mérida</strong>: an SSG and bilingual website with a
+      Wordpress backend, <Link href="https://nectarmerida.com.mx"
+        >visit here</Link
+      >
+    </li>
+  </ul>
+  <div
+    class="flex flex-col items-center justify-center mt-4 relative h-[30vh] overflow-hidden"
+  >
+    <div
+      class="absolute animate-sun left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+      <Sun />
+    </div>
   </div>
-  <script>
-    import anime from "animejs";
-
-    const DURATION = 1000;
-    const letters = document.getElementsByClassName(
-      "im-tona-header__animatable"
-    );
-
-    const letterMovementAnimation = anime
-      .timeline({ loop: true, duration: DURATION, autoplay: false })
-      .add({
-        targets: letters,
-        translateY: [0, -8, 0],
-        easing: "easeInOutSine",
-        delay: (_, i) => 50 * i,
-      })
-      .add({
-        duration: DURATION * 2,
-      });
-
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    function handleAnimation(query: { matches: boolean }) {
-      if (query.matches) {
-        letterMovementAnimation.pause();
-      } else {
-        letterMovementAnimation.play();
-      }
-    }
-
-    mediaQuery.addEventListener("change", () => {
-      handleAnimation(mediaQuery);
-    });
-
-    handleAnimation(mediaQuery);
-  </script>
-
-  <style lang="scss">
-    @import "../styles/theme.scss";
-
-    .im-tona {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      height: 100%;
-    }
-
-    .im-tona-header {
-      display: flex;
-      flex-direction: column;
-      font-size: 3.25rem;
-      margin: 0 0 2rem 0;
-
-      &__subtitle {
-        --animation-repetition: 1;
-        font-size: 0.6em;
-        @include glowing-text($color-accent-value);
-
-        &:hover {
-          --animation-repetition: 2;
-          --anim-play-state: running;
-          animation-duration: 0.75s;
-        }
-      }
-    }
-
-    .im-tona-linkbar {
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .im-tona-link {
-      font-size: 1.25rem;
-    }
-
-    .im-tona-header__block {
-      display: inline-block;
-    }
-
-    .im-tona-header__animatable {
-      display: inline-block;
-    }
-  </style>
 </div>
+
+<style lang="scss">
+  @import "../styles/theme.scss";
+
+  .im-tona-link {
+    font-size: 1.25rem;
+  }
+
+  .animate-sun {
+    animation: rotate-sun 50s linear infinite;
+
+    @keyframes rotate-sun {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+</style>
