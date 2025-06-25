@@ -3,10 +3,15 @@
 .date-calculator-form {
   @extend %flex-box-g-2;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   padding: 1rem 0.5rem;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  @include md {
+    flex-direction: row;
+  }
 }
 
 .date-calculator__result {

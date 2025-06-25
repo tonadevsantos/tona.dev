@@ -1,11 +1,17 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  bodyClass?: string;
+}
+
 const props = Astro.props;
-const { class: classes, ...rest } = props;
+const { class: classes, bodyClass, ...rest } = props;
 ---
 
-<div {...rest} class={`terminal`}>
+<div {...rest} class:list={["terminal", classes]}>
   <div class="terminal__title-bar"></div>
-  <div class:list={`terminal__body ${classes ?? ""}`}>
+  <div class:list={["terminal__body", bodyClass]}>
     <slot />
   </div>
 </div>
@@ -16,7 +22,6 @@ const { class: classes, ...rest } = props;
 
   .terminal {
     width: 100%;
-    height: 100%;
     background-color: $terminal-color-bg;
     font-size: 1rem;
     font-family: monospace;

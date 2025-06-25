@@ -6,7 +6,7 @@ const title = frontmatter.title || "tona.dev / Element!";
 ---
 
 <Layout title={title}>
-  <main class="content frontmatter">
+  <main class="content frontmatter text-justify">
     <slot />
   </main>
 </Layout>
@@ -16,5 +16,19 @@ const title = frontmatter.title || "tona.dev / Element!";
 
   h1 {
     @apply text-4xl font-bold mb-4;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold mb-3;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  blockquote {
+    @apply italic border-l-4 pl-4 my-4;
+    border-color: var(--color-text-value);
+    background: var(--color-bg-700);
   }
 </style>

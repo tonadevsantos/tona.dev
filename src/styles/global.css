@@ -2,16 +2,17 @@
 
 @theme {
   /* bg color scale */
-  --color-bg-50: #1a141a;
-  --color-bg-100: #161016;
-  --color-bg-200: #120c12;
-  --color-bg-300: #0e080e;
-  --color-bg-400: #0a040a;
-  --color-bg-500: #080308;
-  --color-bg-600: #060206;
-  --color-bg-700: #040104;
-  --color-bg-800: #020002;
-  --color-bg-900: #000000;
+  --color-bg-50: oklch(94.91% 0.024 325.85);
+  --color-bg-100: oklch(89.53% 0.048 326.02);
+  --color-bg-200: oklch(79.51% 0.099 326.48);
+  --color-bg-300: oklch(68.95% 0.153 327.09);
+  --color-bg-400: oklch(59.96% 0.198 327.71);
+  --color-bg-500: oklch(49.62% 0.166 327.73);
+  --color-bg-600: oklch(38.44% 0.122 327.64);
+  --color-bg-700: oklch(25.28% 0.073 327.49);
+  --color-bg-800: oklch(11.29% 0.021 326.86);
+  --color-bg-900: oklch(8.52% 0.021 327.26);
+  --color-bg-950: oklch(8.52% 0.021 327.26);
 
   /* text color scale */
   --color-text-50: #ffffff;

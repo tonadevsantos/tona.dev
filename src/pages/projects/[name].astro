@@ -1,23 +1,18 @@
 ---
 import Frontmatter from "../../layouts/Frontmatter.astro";
+import { getEntry, render } from "astro:content";
 
 const { name } = Astro.params;
 
-let Content;
-let frontmatter;
-try {
-  const Response = await import(`../../content/projects/${name}.md`);
-  Content = Response.Content;
-  frontmatter = Response.frontmatter;
-} catch (error) {
-  console.error("Error in [name].astro:", error);
-}
+const entry = await getEntry("projects", name ?? "");
 
-if (!frontmatter) {
+if (!entry) {
   return Astro.rewrite("/404");
 }
+
+const { Content } = await render(entry);
 ---
 
-<Frontmatter frontmatter={frontmatter}>
+<Frontmatter frontmatter={entry.data}>
   <Content />
 </Frontmatter>

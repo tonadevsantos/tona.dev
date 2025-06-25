@@ -1,0 +1,28 @@
+---
+title: Pretty Params
+---
+
+import Window from "../../components/Window.astro";
+import { PrettyParamsDemo } from "../../views/PrettyParamsDemo.tsx";
+import { prettyParams } from "../links.ts";
+
+# {frontmatter.title}
+
+## A browser extension to manage URL parameters
+
+Check out the demo bellow, you'll just need to first install the extension and then click the "Star Demo" button bellow
+
+<Window class="my-4 min-h-92">
+  <PrettyParamsDemo client:only />
+</Window>
+
+During development the process I end up with a very long URL, that is very hard to manage in the browser view, take a look at the next example:
+
+> `https://development.qa.tona.dev/friendly/uuid=d3b4f5c6-7e8f-9a0b-b1c2-d3e4f5g6h7i8?elementId=190&selection=full&gibberish=true&...`
+
+The URL gets trimmed and it's hard to navigate it with the keyboard arrows, I found it way easier to copy them and then manage it in the browser console, but it was so manual that I figured I could do something about it.
+Since it's been a while since I wanted to make a browser extension, then I started working on Pretty Params.
+
+## Development Overview
+
+I started working in the project in March 2025, it was a good opportunity to keep learning shadcn/ui and understand better the browser extension API, it was also a good opportunity to use GitHub Copilot to generate placeholder code and ask questions about the browser extension API extension API.

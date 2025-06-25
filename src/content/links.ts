@@ -20,4 +20,5 @@ export const links = [
 export const prettyParams = {
   firefox: "https://addons.mozilla.org/en-US/firefox/addon/pretty-params/",
   edge: "https://microsoftedge.microsoft.com/addons/detail/pretty-params/fiddpabcckahhdlepgbbmmenophlkaje",
+  github: "https://github.com/tonadevsantos/pretty-params",
 };
