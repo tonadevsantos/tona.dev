@@ -15,7 +15,8 @@ const iconMap = {
 };
 ---
 
-<ul class="flex flex-col md:flex-row gap-4">
+<h3 class="text-xl text-center font-semibold mb-4">Get in touch</h3>
+<ul class="flex flex-col items-center justify-center md:flex-row gap-4">
   {
     linksArr.map((link) => {
       const Icon = iconMap[link.name] || React.Fragment;

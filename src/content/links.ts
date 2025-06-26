@@ -11,16 +11,25 @@ export const links = {
     name: "dev.to",
     url: "https://dev.to/tonadev",
   },
-  x: {
+  X: {
     name: "X",
     url: "https://x.com/tonadev",
   },
-};
+} as const;
 
 export const linksArr = Object.values(links);
 
-export const prettyParams = {
-  firefox: "https://addons.mozilla.org/en-US/firefox/addon/pretty-params/",
-  edge: "https://microsoftedge.microsoft.com/addons/detail/pretty-params/fiddpabcckahhdlepgbbmmenophlkaje",
-  github: "https://github.com/tonadevsantos/pretty-params",
-};
+export const prettyParamsLinks = {
+  firefox: {
+    name: "Firefox",
+    href: "https://addons.mozilla.org/en-US/firefox/addon/pretty-params/",
+  },
+  edge: {
+    name: "Edge",
+    href: "https://microsoftedge.microsoft.com/addons/detail/pretty-params/fiddpabcckahhdlepgbbmmenophlkaje",
+  },
+  github: {
+    name: "GitHub",
+    href: "https://github.com/tonadevsantos/pretty-params",
+  },
+} as const;

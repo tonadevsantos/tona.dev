@@ -7,7 +7,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   };
 
 const btnClass =
-  "text-text-300 bg-icon-600 hover:bg-icon-700 focus:ring-4 focus:ring-link-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-icon-600 dark:hover:bg-icon-700 focus:outline-none dark:focus:ring-accent-300";
+  "text-text-300 bg-icon-600 hover:bg-icon-700 focus:ring-4 focus:ring-link-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-icon-600 dark:hover:bg-icon-700 focus:outline-none dark:focus:ring-accent-300";
 
 export const Button: React.FC<ButtonProps> = ({
   href,
