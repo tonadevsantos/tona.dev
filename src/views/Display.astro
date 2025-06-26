@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import Button from "../components/Button.astro";
 import prettyParamsDemo from "../media/pretty-params-product.png";
-import { defaultSearch } from "./PrettyParamsDemo";
 ---
 
 <div class="flex flex-col items-center gap-3 p-2 overflow-hidden">
@@ -18,10 +17,7 @@ import { defaultSearch } from "./PrettyParamsDemo";
       widths={[150, 300, 500, 800]}
     />
   </div>
-  <p class="mb-4">
-    This extension was created to help me manage URL search params easily for my
-    development process.
-  </p>
+  <p class="mb-4">Check out my browser extension</p>
   <Button href="/projects/pretty-params" class="font-sans">View Overview</Button
   >
 </div>

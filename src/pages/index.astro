@@ -3,8 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Tona from "../views/Tona.astro";
 import Window from "../components/Window.astro";
 import Display from "../views/Display.astro";
-import { links } from "../content/links";
-import Link from "../components/Link.astro";
+import MyLinks from "../views/MyLinks.astro";
 ---
 
 <Layout title="tona.dev / Sup!">
@@ -19,72 +18,15 @@ import Link from "../components/Link.astro";
         <Display />
       </Window>
     </div>
-    <div class="col-span-1 md:col-span-3 h-24">
-      <Window bodyClass="h-24 flex flex-col justify-center bg-blue">
-        <div class="flex justify-center align-center mb-4 gap-4">
-          {
-            links.map((link) => (
-              <Link
-                href={link.url}
-                class="text-lg "
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.name}
-              </Link>
-            ))
-          }
-        </div>
+    <div class="col-span-1 col-row-1 md:col-span-3">
+      <Window bodyClass="h-full md:min-h-50 flex items-center justify-center">
+        <MyLinks />
       </Window>
     </div>
   </div>
 </Layout>
 
 <style lang="scss">
-  @import "../styles/theme.scss";
-
-  .hero {
-    @include md {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    @include xl {
-      margin-top: calc(35dvh - $navbar-height-tablet);
-    }
-  }
-
-  .main-hero {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 2rem;
-
-    @include xl {
-      flex-direction: row;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .tona-box {
-      @extend %box-padding;
-
-      height: 100%;
-
-      display: flex;
-      flex-direction: columns;
-      justify-content: center;
-    }
-    .terminal-box {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-    }
-  }
-
   .tona-grid {
     --height-offset: calc(var(--navbar-height) + calc(var(--spacing) * 4));
     max-height: calc(100vh - var(--height-offset));

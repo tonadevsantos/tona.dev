@@ -1,11 +1,13 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { getRing } from "./a11y";
 interface Props extends HTMLAttributes<"a"> {}
 
 const { props } = Astro;
+const { class: classes, ...rest } = props;
 ---
 
-<a {...props}>
+<a {...props} class:list={[getRing(), classes]}>
   <slot />
 </a>
 <style scoped lang="scss">
@@ -13,9 +15,5 @@ const { props } = Astro;
 
   a {
     @include glowing-text($link-active);
-
-    &:hover {
-      @include glowing-text(lighten($link-active, 15));
-    }
   }
 </style>

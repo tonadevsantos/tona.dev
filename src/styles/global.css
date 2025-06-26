@@ -88,7 +88,6 @@
   --color-tertiary-950: #012b32;
 
   /** tertiary foreground */
-  --color-tertiary-fg-500: #90fcf9;
-
+  --color-tertiary-fg: var(--color-bg-700);
   --navbar-height: min(22vh, 10rem);
 }

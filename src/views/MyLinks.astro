@@ -1,0 +1,41 @@
+---
+import Link from "../components/Link.astro";
+import { linksArr } from "../content/links";
+import Github from "../components/icons/github.astro";
+import React from "react";
+import Devto from "../components/icons/devto.astro";
+import X from "../components/icons/X.astro";
+import LinkedIn from "../components/icons/linkedin.astro";
+
+const iconMap = {
+  GitHub: Github,
+  "dev.to": Devto,
+  X: X,
+  LinkedIn: LinkedIn,
+};
+---
+
+<ul class="flex flex-col md:flex-row gap-4">
+  {
+    linksArr.map((link) => {
+      const Icon = iconMap[link.name] || React.Fragment;
+      return (
+        <li class="flex flex-col items-center md:justify-center gap-2">
+          <Icon />
+          <Link href={link.url} class="text-lg">
+            {link.name}
+          </Link>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  li {
+    svg {
+      width: 2em;
+      height: 2em;
+    }
+  }
+</style>

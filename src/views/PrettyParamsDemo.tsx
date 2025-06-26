@@ -1,18 +1,20 @@
+import { Button } from "../components/button";
+
 const year = new Date().getFullYear();
 const language =
   typeof navigator === "undefined" ? "en-US" : navigator.language;
 
 export const defaultSearch = new URLSearchParams({
   name: "Visitor",
-  color: "pink",
+  color: "violet",
   year: year.toString(),
   place: "Somewhere",
   language,
-  emoji: "👋",
+  emoji: "🍇",
   framework: "Astro",
 });
 
-const AVAILABLE_COLORS = ["blue", "pink", "yellow", "white"] as const;
+const AVAILABLE_COLORS = ["blue", "pink", "yellow", "white", "violet"] as const;
 type Color = (typeof AVAILABLE_COLORS)[number];
 
 function quotify(str: string) {
@@ -40,6 +42,7 @@ const colorClassMap: Record<Color, string> = {
   pink: "text-link-400",
   yellow: "text-accent-300",
   white: "bg-text-100 text-bg-600",
+  violet: "text-icon-200",
 };
 
 interface Params {
@@ -64,7 +67,7 @@ export function PrettyParamsDemo() {
   const year = getParam(searchParams, "year", "1991");
   const place = getParam(searchParams, "place", "MX");
   const language = getParam(searchParams, "language", "es");
-  const emoji = getParam(searchParams, "emoji", "👋");
+  const emoji = getParam(searchParams, "emoji", "👋🏼");
   const framework = getParam(searchParams, "framework", "Astro");
 
   const params: Params[] = [
@@ -73,7 +76,7 @@ export function PrettyParamsDemo() {
     {
       name: "color",
       value: quotify(color),
-      description: "Options: blue, pink, yellow, white",
+      description: "Options: blue, pink, yellow, white and violet",
     },
     { name: "year", value: year },
     { name: "place", value: quotify(place) },
@@ -96,12 +99,9 @@ export function PrettyParamsDemo() {
           ) : null}
         </div>
       ))}
-      <a
-        href={`?${defaultSearch.toString()}`}
-        className="bg-link-500 text-text-50 p-2 block justify-self-end rounded hover:underline"
-      >
-        Start Demo
-      </a>
+      <div className="flex justify-end items-center w-full">
+        <Button href={`?${defaultSearch.toString()}`}>Start Demo</Button>
+      </div>
     </div>
   );
 }

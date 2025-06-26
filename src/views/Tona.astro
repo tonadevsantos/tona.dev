@@ -3,44 +3,44 @@ import Link from "../components/Link.astro";
 import Sun from "../components/sun.astro";
 ---
 
-<div class="text-justify p-2">
+<div class="text-center p-4">
   <h1 class="text-3xl mb-4">
     <span class="im-tona-header__name"> I'm Tona González</span>
   </h1>
-  <p class="mb-4">
+  <p class="mb-4 max-w-3xl mx-auto">
     I love to build and create, I'm a self-taught software developer and my main
-    stack is TypeScript, React and Node.js. I've worked in multiple team sizes
-    and industries. I've collaborated creating npm packages, design systems,
-    building data heavy websites, data intensive dashboards and more.
+    stack is TypeScript, React and Node.js.
   </p>
-  <h2 class="text-lg">Latest projects</h2>
-  <ul class="list-disc pl-4 break-keep">
-    <li>
-      <strong>Pretty Params</strong>: A browser extension to manage the URL
-      search params easily,
-      <Link href="/projects/pretty-params">know more</Link>
-    </li>
-    <li>
-      <strong>Recicla CV</strong>: A website for a recycling company in
-      Guadalajara, México, <Link href="https://reciclacv.com"
-        >give it a look</Link
-      >
-    </li>
-    <li>
-      <strong>Nectar Mérida</strong>: an SSG and bilingual website with a
-      Wordpress backend, <Link href="https://nectarmerida.com.mx"
-        >visit here</Link
-      >
-    </li>
-  </ul>
   <div
-    class="flex flex-col items-center justify-center mt-4 relative h-[30vh] overflow-hidden"
+    class="flex flex-col items-center justify-center mb-4 relative h-[30vh] overflow-hidden"
   >
     <div
       class="absolute animate-sun left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <Sun />
     </div>
+  </div>
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-lg">Latest projects</h2>
+    <ul class="list-disc pl-4 break-keep text-justify">
+      <li>
+        <strong>Pretty Params</strong>: A browser extension to manage the URL
+        search params easily,
+        <Link href="/projects/pretty-params">know more</Link>
+      </li>
+      <li>
+        <strong>Recicla CV</strong>: A website for a recycling company in
+        Guadalajara, México, <Link href="https://reciclacv.com"
+          >give it a look</Link
+        >
+      </li>
+      <li>
+        <strong>Nectar Mérida</strong>: an SSG and bilingual website with a
+        Wordpress backend, <Link href="https://nectarmerida.com.mx"
+          >visit here</Link
+        >
+      </li>
+    </ul>
   </div>
 </div>
 
