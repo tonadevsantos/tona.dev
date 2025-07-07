@@ -1,7 +1,16 @@
 ---
 title: Pretty Params | tona.dev
+meta:
+  [
+    {
+      name: "description",
+      content: "A browser extension to manage URL parameters.",
+    },
+  ]
 ---
 
+import { Image } from "astro:assets";
+import prettyParamsImage from "../../media/pretty-params-product.png";
 import Window from "../../components/Window.astro";
 import { PrettyParamsDemo } from "../../views/PrettyParamsDemo.tsx";
 import { PrettyParamsLinks } from "../../views/pretty-params-links.tsx";
@@ -18,6 +27,13 @@ Check out the demo bellow, you'll just need to first install the extension and t
 <Window class="my-4 min-h-92">
   <PrettyParamsDemo client:only />
 </Window>
+
+<Image
+  src={prettyParamsImage}
+  widths={[160, 320, 640]}
+  alt="Pretty params browser extension screenshot"
+  class="w-full max-w-md mx-auto my-4"
+/>
 
 During development the process I end up with a very long URL, that is very hard to manage in the browser view, take a look at the next example:
 

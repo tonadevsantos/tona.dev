@@ -3,9 +3,10 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 
 const title = frontmatter.title || "tona.dev / Element!";
+const meta = frontmatter.meta;
 ---
 
-<Layout title={title}>
+<Layout title={title} meta={meta}>
   <main class="px-8 md:px-2 ln-h container mx-auto text-justify leading-7">
     <slot />
   </main>
