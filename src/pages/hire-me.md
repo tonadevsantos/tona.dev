@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/FrontMatter.astro
+layout: ../layouts/Frontmatter.astro
 ---
 
 # Hire Me
