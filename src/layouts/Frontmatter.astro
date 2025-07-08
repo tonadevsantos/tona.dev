@@ -7,7 +7,9 @@ const meta = frontmatter.meta;
 ---
 
 <Layout title={title} meta={meta}>
-  <main class="px-8 md:px-2 ln-h container mx-auto text-justify leading-7">
+  <main
+    class="px-8 ln-h container max-w-4xl mx-auto text-justify leading-7 space-y-4"
+  >
     <slot />
   </main>
 </Layout>
@@ -23,8 +25,24 @@ const meta = frontmatter.meta;
     @apply text-2xl font-semibold mb-3;
   }
 
+  h3 {
+    @apply text-lg font-semibold mb-2;
+  }
+
   p {
-    @apply mb-4;
+    a {
+      color: var(--color-link);
+    }
+  }
+
+  li {
+    a {
+      color: var(--color-link);
+    }
+  }
+
+  ul {
+    list-style: disc;
   }
 
   blockquote {
@@ -34,6 +52,24 @@ const meta = frontmatter.meta;
 
     p {
       @apply truncate;
+    }
+  }
+
+  code {
+    @apply italic font-mono;
+    background: var(--color-bg-700);
+  }
+
+  table {
+    @apply border-collapse border;
+    width: 100%;
+
+    th {
+      @apply border border-gray-200 p-2;
+    }
+
+    td {
+      @apply border border-gray-200 p-2;
     }
   }
 </style>

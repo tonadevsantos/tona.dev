@@ -2,8 +2,8 @@
 
 ---
 
-<nav class="navbar">
-  <a href="/" class="navbar-item navbar-item__header">tona.dev</a>
+<nav class="navbar container mx-auto max-w-6xl pl-4">
+  <a href="/" class="navbar-item navbar-item__header"> tona.dev </a>
 </nav>
 <style lang="scss">
   @use "sass:map";
@@ -27,7 +27,6 @@
       font-size: 2rem;
       transition: text-shadow 1s ease;
       font-weight: 700;
-      padding: 0.5rem;
 
       &:hover {
         @include glowing-text(lighten($navbar-link-color, 15));
@@ -37,15 +36,10 @@
         outline: 2px solid $color-link;
         border-radius: 4px;
       }
-
-      @include md() {
-        margin-left: 7.5rem;
-      }
     }
 
     .navbar-menu {
       display: flex;
-      padding-left: 8vw;
       justify-content: center;
       width: 100%;
     }
