@@ -5,7 +5,9 @@ on:
     branches:
       - main
     paths-ignore:
-      - "**/*.md"
+      - "*.md"
+      - "!content/**/*.md"
+      - "!pages/**/*.md"
 
 jobs:
   deploy:
