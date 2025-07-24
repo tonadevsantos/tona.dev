@@ -21,10 +21,13 @@ const iconMap = {
     linksArr.map((link) => {
       const Icon = iconMap[link.name] || React.Fragment;
       return (
-        <li class="flex flex-col items-center md:justify-center gap-2">
-          <Icon />
-          <Link href={link.url} class="text-lg">
-            {link.name}
+        <li>
+          <Link
+            href={link.url}
+            class="flex flex-col items-center md:justify-center gap-2 opacity-80 hover:opacity-100"
+          >
+            <Icon />
+            <span class="text-lg">{link.name}</span>
           </Link>
         </li>
       );
