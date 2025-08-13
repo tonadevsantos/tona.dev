@@ -51,6 +51,7 @@ const { title, meta = [] } = Astro.props;
 </html>
 <style lang="scss" is:global>
   @import "../styles/theme.scss";
+  @import "tailwindcss";
 
   :root {
     @extend %root-colors;
@@ -71,5 +72,9 @@ const { title, meta = [] } = Astro.props;
 
   .glow-text {
     @include glowing-text($color-text-value);
+  }
+
+  .tona-container {
+    @apply px-8 container max-w-4xl mx-auto text-justify leading-7 space-y-4;
   }
 </style>

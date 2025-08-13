@@ -90,4 +90,7 @@
   /** tertiary foreground */
   --color-tertiary-fg: var(--color-bg-700);
   --navbar-height: min(22vh, 10rem);
+
+  /* Components */
+  --color-terminal-bg: #1a0e1a;
 }

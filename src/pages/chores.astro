@@ -1,0 +1,28 @@
+---
+import Window from "@/components/Window.astro";
+import Layout from "@/layouts/Layout.astro";
+import { WeekRangeInput } from "@/components/week-range-input";
+import { PazTerrain } from "@/components/paz-terrain";
+---
+
+<Layout title="Chores">
+  <main class="tona-container">
+    <h1 class="text-4xl font-bold mb-4">Chores</h1>
+    <div class="flex gap-8 flex-wrap mb-8">
+      <Window bodyClass="p-4">
+        <div class="space-y-4 text-center container max-w-sm mx-auto">
+          <h2 class="text-3xl">
+            Time <span aria-hidden>⏱</span>️ Time !
+          </h2>
+          <WeekRangeInput client:load />
+        </div>
+      </Window>
+      <Window bodyClass="py-4">
+        <!-- Insert Paz Terrain  -->
+        <PazTerrain client:idle />
+      </Window>
+    </div>
+  </main>
+</Layout>
+
+<script></script>
