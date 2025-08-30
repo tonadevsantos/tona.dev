@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Window from "../components/Window.astro";
+import Button from "@/components/Button.astro";
 
 const tags: Record<string, { label: string; style: string }> = {
   webApp: { label: "Web App", style: "bg-blue-500/20 text-blue-300" },
@@ -115,14 +116,14 @@ const skills = [
                     </span>
                   ))}
                 </div>
-                <a
+                <Button
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`inline-block mt-4 px-4 py-2 bg-${project.buttonColor}-600 hover:bg-${project.buttonColor}-700 rounded-md transition-colors`}
+                  class="ml-auto"
                 >
                   {project.buttonText}
-                </a>
+                </Button>
               </div>
             </Window>
           ))

@@ -17,16 +17,17 @@ This is a personal website (tona.dev) built with Astro 5, using server-side rend
 
 ## Development Commands
 
-| Command | Purpose |
-|---------|---------|
-| `npm run dev` | Start development server at localhost:3000 |
-| `npm run build` | Type check with `astro check` then build production site |
-| `npm run preview` | Preview production build locally |
-| `npm run astro` | Run Astro CLI commands |
+| Command           | Purpose                                                  |
+| ----------------- | -------------------------------------------------------- |
+| `npm run dev`     | Start development server at localhost:3000               |
+| `npm run build`   | Type check with `astro check` then build production site |
+| `npm run preview` | Preview production build locally                         |
+| `npm run astro`   | Run Astro CLI commands                                   |
 
 ## Architecture
 
 ### Directory Structure
+
 - `src/pages/` - Astro file-based routing (includes blog, projects, chores)
 - `src/layouts/` - Layout components (Layout.astro, Frontmatter.astro)
 - `src/components/` - Reusable UI components (mix of .astro and .tsx)
@@ -37,21 +38,26 @@ This is a personal website (tona.dev) built with Astro 5, using server-side rend
 - `src/styles/` - Styling configuration and tokens
 
 ### Key Components Architecture
+
 - **Apps System**: Self-contained applications in `src/apps/` with `AppRouter.tsx` and `AppBox.astro` for routing
 - **Content Collections**: Projects defined in `content.config.ts` using Astro's glob loader
 - **Path Aliases**: `@/*` maps to `src/*` for cleaner imports
 - **React Integration**: React components (.tsx) work alongside Astro components (.astro)
 
 ### Content Management
+
 - Projects collection uses MDX with custom schema (title, meta array)
 - Content stored in `src/content/projects/` with automatic loading via glob pattern
 
 ### Styling Approach
+
 - TailwindCSS 4 via Vite plugin (not PostCSS)
 - Design tokens in `src/styles/tokens.ts`
 - Sass available for complex styling needs
+- When using tailwind colors, ensure there's a hardcoded reference to the color, e.g bg-orange-500, since having references such as `bg-${primaryColor}-500` gets ignored by Tailwind.
 
 ### Build Configuration
+
 - Server-side rendering enabled with Node.js standalone adapter
 - TypeScript with strict configuration extending Astro's strict preset
 - Custom redirects configured in astro.config.mjs
