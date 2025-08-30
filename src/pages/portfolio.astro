@@ -1,0 +1,194 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Window from "../components/Window.astro";
+
+const tags: Record<string, { label: string; style: string }> = {
+  webApp: { label: "Web App", style: "bg-blue-500/20 text-blue-300" },
+  react: { label: "React", style: "bg-green-500/20 text-green-300" },
+  business: { label: "Business", style: "bg-purple-500/20 text-purple-300" },
+  local: { label: "Local", style: "bg-orange-500/20 text-orange-300" },
+  devTool: { label: "Dev Tool", style: "bg-cyan-500/20 text-cyan-300" },
+  utility: { label: "Utility", style: "bg-green-500/20 text-green-300" },
+  automation: { label: "Automation", style: "bg-green-500/20 text-green-300" },
+  industrial: { label: "Industrial", style: "bg-teal-500/20 text-teal-300" },
+  corporate: { label: "Corporate", style: "bg-blue-500/20 text-blue-300" },
+  a11y: { label: "a11y", style: "bg-emerald-500/20 text-emerald-300" },
+  i18n: { label: "i18n", style: "bg-violet-500/20 text-violet-300" },
+  awsLambda: { label: "AWS Lambda", style: "bg-pink-500/20 text-pink-300" },
+  selfHosted: { label: "Self Hosted", style: "bg-slate-500/20 text-slate-300" },
+  firefox: { label: "Firefox", style: "bg-orange-500/20 text-orange-300" },
+  edge: { label: "Edge", style: "bg-blue-500/20 text-blue-300" },
+  ssr: { label: "SSR", style: "bg-indigo-500/20 text-indigo-300" },
+  astro: { label: "Astro", style: "bg-purple-500/20 text-purple-300" },
+  ssg: { label: "SSG", style: "bg-purple-500/20 text-purple-300" },
+  restApi: { label: "REST API", style: "bg-yellow-500/20 text-yellow-300" },
+  nodejs: { label: "Node.js", style: "bg-green-500/20 text-green-300" },
+  typescript: { label: "TypeScript", style: "bg-blue-500/20 text-blue-300" },
+  tailwindcss: { label: "TailwindCSS", style: "bg-cyan-500/20 text-cyan-300" },
+};
+
+const featuredProjects = [
+  {
+    title: "ReciclaCv",
+    description:
+      "Sustainable CV management platform focused on eco-friendly recruitment processes.",
+    tags: [tags.webApp, tags.react, tags.ssg, tags.astro, tags.awsLambda],
+    url: "https://reciclacv.com",
+    buttonText: "Visit Site →",
+    buttonColor: "blue",
+  },
+  {
+    title: "Nectar Mérida",
+    description:
+      "Local business platform connecting Mérida entrepreneurs with their community.",
+    tags: [tags.business, tags.local, tags.i18n, tags.react],
+    url: "https://nectarmerida.com.mx",
+    buttonText: "Visit Site →",
+    buttonColor: "purple",
+  },
+  {
+    title: "Pretty Params",
+    description:
+      "Developer tool for creating beautiful and readable URL parameters with ease.",
+    tags: [tags.devTool, tags.utility, tags.firefox, tags.edge],
+    url: "/projects/pretty-params",
+    buttonText: "View Project →",
+    buttonColor: "cyan",
+  },
+  {
+    title: "ProntoWhats",
+    description:
+      "WhatsApp automation tool for businesses to streamline customer communication.",
+    tags: [tags.automation, tags.business, tags.astro, tags.ssg],
+    url: "https://prontowhats.com",
+    buttonText: "Visit Site →",
+    buttonColor: "green",
+  },
+  {
+    title: "Hidroval",
+    description:
+      "Industrial water treatment solutions with comprehensive service management.",
+    tags: [tags.industrial, tags.corporate, tags.ssr, tags.react, tags.restApi],
+    url: "https://hidroval.com.mx",
+    buttonText: "Visit Site →",
+    buttonColor: "teal",
+  },
+];
+
+const skills = [
+  tags.react,
+  tags.astro,
+  tags.nodejs,
+  tags.typescript,
+  tags.tailwindcss,
+];
+---
+
+<Layout title="tona.dev / Portfolio">
+  <div class="tona-container py-8 space-y-12">
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <h1 class="text-4xl md:text-6xl font-bold">My work</h1>
+      <p class="text-lg md:text-xl opacity-80 max-w-2xl mx-auto">
+        A collection of projects I've worked on, showcasing my skills in web
+        development, design, and problem-solving.
+      </p>
+    </header>
+
+    <!-- Projects Grid -->
+    <section class="space-y-8">
+      <h2 class="text-2xl md:text-3xl font-semibold text-center">
+        Featured Projects
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          featuredProjects.map((project) => (
+            <Window class="project-card">
+              <div class="p-6 space-y-4">
+                <h3 class="text-xl font-semibold">{project.title}</h3>
+                <p class="text-sm opacity-80">{project.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span class={`px-2 py-1 rounded-md text-xs ${tag.style}`}>
+                      {tag.label}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`inline-block mt-4 px-4 py-2 bg-${project.buttonColor}-600 hover:bg-${project.buttonColor}-700 rounded-md transition-colors`}
+                >
+                  {project.buttonText}
+                </a>
+              </div>
+            </Window>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="space-y-6">
+      <h2 class="text-2xl md:text-3xl font-semibold text-center">About Me</h2>
+
+      <Window>
+        <div class="p-8 space-y-6">
+          <div class="text-center">
+            <h3 class="text-xl font-semibold mb-4">Tona González</h3>
+            <p class="text-lg opacity-80">
+              Full-Stack Developer & Digital Creator
+            </p>
+          </div>
+
+          <div class="space-y-4 text-justify">
+            <p>
+              Hi! I'm Tona, a passionate developer who loves creating digital
+              experiences that make a difference. My journey in web development
+              has taken me through various projects, from sustainable platforms
+              to automation tools, always focusing on clean code and
+              user-centered design.
+            </p>
+
+            <p>
+              I specialize in modern web technologies including React, Astro,
+              and Node.js, I focus on performance optimization and
+              accessibility. When I'm not coding, you'll find me exploring new
+              technologies, contributing to open-source projects, or sharing
+              knowledge with the developer community.
+            </p>
+
+            <p>
+              Each project in my portfolio represents not just code, but
+              solutions to real-world problems. I believe in building
+              applications that are not only functional but also meaningful and
+              sustainable.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4 justify-center pt-4">
+            {
+              skills.map((skill) => (
+                <span class={`px-3 py-2 rounded-lg ${skill.style}`}>
+                  {skill.label}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </Window>
+    </section>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .project-card {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+</style>

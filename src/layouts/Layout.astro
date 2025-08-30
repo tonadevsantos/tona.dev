@@ -74,6 +74,10 @@ const { title, meta = [] } = Astro.props;
     @include glowing-text($color-text-value);
   }
 
+  .glow-header {
+    @include glowing-text($color-accent-value);
+  }
+
   .tona-container {
     @apply px-8 container max-w-4xl mx-auto text-justify leading-7 space-y-4;
   }
