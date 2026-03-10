@@ -12,6 +12,9 @@ export default defineConfig({
     mode: "standalone",
   }),
   output: "server",
+  server: {
+    port: 3300,
+  },
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],

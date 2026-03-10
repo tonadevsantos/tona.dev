@@ -1,7 +1,7 @@
 export const links = {
   github: {
     name: "GitHub",
-    url: "https://github.com/tonadevsantos",
+    url: "https://github.com/tona-dev",
   },
   linkedin: {
     name: "LinkedIn",
